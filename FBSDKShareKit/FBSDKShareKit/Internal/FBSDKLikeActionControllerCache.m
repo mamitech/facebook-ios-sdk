@@ -25,7 +25,11 @@
 #import <UIKit/UIKit.h>
 
 #import "FBSDKLikeActionController.h"
+#ifdef FBSDKCOCOAPODS
+#import <FBSDKCoreKit/FBSDKCoreKit+Internal.h>
+#else
 #import "FBSDKCoreKit+Internal.h"
+#endif
 
 // after 1 day, expire the cached states
 #define FBSDK_LIKE_ACTION_CONTROLLER_CACHE_TIMEOUT 60 * 24
