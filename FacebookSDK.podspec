@@ -3,7 +3,7 @@
 Pod::Spec.new do |s|
 
   s.name         = 'FacebookSDK'
-  s.version      = '7.1.1'
+  s.version      = '8.2.0'
   s.summary      = 'Official Facebook SDK for iOS to access Facebook Platform'
 
   s.description  = <<-DESC
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
   s.author       = 'Facebook'
 
   s.platform     = :ios, :tvos
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
   s.tvos.deployment_target = '10.0'
 
   s.source       = { :git => 'https://github.com/facebook/facebook-ios-sdk.git',

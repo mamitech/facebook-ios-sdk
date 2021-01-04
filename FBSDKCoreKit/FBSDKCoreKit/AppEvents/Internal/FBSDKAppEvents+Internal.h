@@ -17,9 +17,9 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #if SWIFT_PACKAGE
-#import "FBSDKAppEvents.h"
+ #import "FBSDKAppEvents.h"
 #else
-#import <FBSDKCoreKit/FBSDKAppEvents.h>
+ #import <FBSDKCoreKit/FBSDKAppEvents.h>
 #endif
 
 #import "FBSDKAppEventsUtility.h"
@@ -78,6 +78,15 @@ FOUNDATION_EXPORT NSString *const FBSDKAppEventNameFBSessionAuthMethodStart;
 
 /** Use to log the end of the last tried auth method as part of an auth request */
 FOUNDATION_EXPORT NSString *const FBSDKAppEventNameFBSessionAuthMethodEnd;
+
+/** Use to log the post-login heartbeat event after  the end of an auth request*/
+FOUNDATION_EXPORT NSString *const FBSDKAppEventNameFBSessionAuthHeartbeat;
+
+/** Use to log the start of a referral request */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventNameFBReferralStart;
+
+/** Use to log the end of a referral request */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventNameFBReferralEnd;
 
 /** Use to log the timestamp for the transition to the Facebook native login dialog */
 FOUNDATION_EXPORT NSString *const FBSDKAppEventNameFBDialogsNativeLoginDialogStart;
@@ -140,7 +149,6 @@ FOUNDATION_EXPORT NSString *const FBSDKAppEventsDialogShareContentTypeVideo;
 FOUNDATION_EXPORT NSString *const FBSDKAppEventsDialogShareContentTypeCamera;
 FOUNDATION_EXPORT NSString *const FBSDKAppEventsDialogShareContentTypeUnknown;
 
-
 FOUNDATION_EXPORT NSString *const FBSDKAppEventsDialogShareModeAutomatic;
 FOUNDATION_EXPORT NSString *const FBSDKAppEventsDialogShareModeBrowser;
 FOUNDATION_EXPORT NSString *const FBSDKAppEventsDialogShareModeNative;
@@ -193,11 +201,7 @@ FOUNDATION_EXPORT NSString *const FBSDKAppEventsWKWebViewMessagesPixelIDKey;
 
 @interface FBSDKAppEvents (Internal)
 
-@property (class, nonatomic, strong, readonly) FBSDKAppEvents *singleton;
-
-#ifdef DEBUG
-+ (void)resetSingleton;
-#endif
+@property (class, nonatomic, readonly, strong) FBSDKAppEvents *singleton;
 
 + (void)logInternalEvent:(FBSDKAppEventName)eventName
       isImplicitlyLogged:(BOOL)isImplicitlyLogged;
@@ -224,7 +228,7 @@ FOUNDATION_EXPORT NSString *const FBSDKAppEventsWKWebViewMessagesPixelIDKey;
               valueToSum:(NSNumber *)valueToSum
               parameters:(NSDictionary *)parameters
       isImplicitlyLogged:(BOOL)isImplicitlyLogged
-            accessToken:(FBSDKAccessToken *)accessToken;
+             accessToken:(FBSDKAccessToken *)accessToken;
 
 + (void)logImplicitEvent:(NSString *)eventName
               valueToSum:(NSNumber *)valueToSum
